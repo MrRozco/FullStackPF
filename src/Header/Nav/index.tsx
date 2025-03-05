@@ -58,13 +58,13 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
           <div key={i} className="relative group ">
             <CMSLink
               {...link}
-              className={`text-lg px-7 h-full flex items-center hover:bg-slate-300 hover:cursor-pointer relative ${
+              className={`text-lg px-7 h-full flex items-center hover:bg-gray-800 hover:cursor-pointer relative ${
                 isActive ? 'bg-slate-300' : '' // Apply hover background if active
               }`}
             >
-              <span className={`absolute bottom-0 left-0 w-full h-[3px] bg-transparent group-hover:bg-green-500 
-                  transition-all duration-500 ease-in-out transform scale-x-0 group-hover:scale-x-100 origin-left 
-                  ${isActive ? 'bg-green-500 scale-x-100' : ''}`}></span>
+              <span className={`absolute bottom-0 left-0 w-full h-[3px] bg-transparent group-hover:bg-green-700 
+                  transition-all duration-700 ease-in-out transform scale-x-0 group-hover:scale-x-100 origin-left 
+                  ${isActive ? 'bg-green-700 scale-x-100' : ''}`}></span>
             </CMSLink>
             {hasDropdown && dropdownItems && <DropdownMenu dropdownLinks={dropdownItems} />}
           </div>
@@ -78,10 +78,10 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
       {/* Mobile Menu */}
       <nav className="lg:hidden flex flex-col space-y-2 h-auto container ">
         {navItems.map(({ link, hasDropdown, dropdownItems }, i) => (
-          <div key={i} className="relative py-2 border-b border-slate-300 last:border-b-0">
+          <div key={i} className="relative py-2 border-b border-white last:border-b-0">
             <div
               onClick={hasDropdown ? () => handleToggleDropdown(i) : undefined}
-              className="text-lg px-4 h-full flex items-center justify-between hover:bg-slate-300 hover:cursor-pointer relative "
+              className="text-lg px-4 h-full flex items-center justify-between hover:cursor-pointer relative "
             >
               <CMSLink {...link} className="flex-1">
               </CMSLink>

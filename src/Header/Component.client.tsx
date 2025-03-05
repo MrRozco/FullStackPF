@@ -43,7 +43,7 @@
 
 
     return (
-      <header className="relative z-20 bg-red-100" {...(theme ? { 'data-theme': theme } : {})}>
+      <header className="relative z-20 text-white bg-black dark:bg-card" {...(theme ? { 'data-theme': theme } : {})}>
         <div className="container flex justify-between">
           <Link href="/">
             <Media imgClassName="w-[200px] h-[70px]" priority resource={data.logo} />
@@ -71,7 +71,7 @@
         </div>
         <div
         className={`
-          lg:hidden bg-red-500 shadow-lg absolute left-0 w-full transition-all duration-500 
+          lg:hidden bg-gray-900 shadow-lg absolute left-0 w-full transition-all duration-500 
           ${isMobileMenuOpen ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-[-100%] pointer-events-none'}
         `}
       >
