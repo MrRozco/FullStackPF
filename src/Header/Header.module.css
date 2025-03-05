@@ -1,0 +1,38 @@
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+}
+
+.hamburger span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: currentColor;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+/* Center the transform origin */
+.hamburger span:nth-child(1) {
+    transform-origin: center center;
+}
+
+.hamburger span:nth-child(3) {
+    transform-origin: center center;
+}
+
+/* Open state transformations */
+.hamburger.open span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);  /* Move down then rotate */
+}
+
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);  /* Move up then rotate */
+}
