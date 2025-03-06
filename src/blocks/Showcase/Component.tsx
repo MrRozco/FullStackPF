@@ -25,8 +25,8 @@ export const ShowcaseComponent: React.FC<ShowcaseBlockProps> = ({ items, title, 
     <div className="container flex flex-col lg:flex-row">
       {/* Left Side */}
       <div className="lg:w-1/2 p-4">
-        <h2 className="text-3xl mb-4">{title}</h2>
-        {content && <RichText className="mb-4 " data={content} enableGutter={false} />}
+        <h2 className="text-3xl mb-4 font-bold">{title}</h2>
+        {content && <RichText className="mb-4 text-lg" data={content} enableGutter={false} />}
         {button && (
             <Button asChild className="border border-white py-3 px-6 rounded mt-4">
               <Link href={url} >
@@ -38,12 +38,12 @@ export const ShowcaseComponent: React.FC<ShowcaseBlockProps> = ({ items, title, 
       {/* Right Side - Carousel */}
       <div className=" lg:w-1/2 p-10">
       <Carousel>
-          <CarouselContent>
+          <CarouselContent >
           {items && items.map((item, index) => (
               item.image ? (
-                <CarouselItem key={index}>
-                  <div className="carousel-item">
-                    <Media resource={item.image} />
+                <CarouselItem key={index} >
+                  <div className="carousel-item rounded-lg overflow-hidden">
+                    <Media resource={item.image}/>
                   </div>
                 </CarouselItem>
               ) : null

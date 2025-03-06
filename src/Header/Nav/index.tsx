@@ -62,9 +62,9 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
                 isActive ? 'bg-slate-300' : '' // Apply hover background if active
               }`}
             >
-              <span className={`absolute bottom-0 left-0 w-full h-[3px] bg-transparent group-hover:bg-green-700 
+              <span className={`absolute bottom-0 left-0 w-full h-[4px] bg-transparent group-hover:bg-green-600 
                   transition-all duration-700 ease-in-out transform scale-x-0 group-hover:scale-x-100 origin-left 
-                  ${isActive ? 'bg-green-700 scale-x-100' : ''}`}></span>
+                  ${isActive ? 'bg-green-600 scale-x-100' : ''}`}></span>
             </CMSLink>
             {hasDropdown && dropdownItems && <DropdownMenu dropdownLinks={dropdownItems} />}
           </div>

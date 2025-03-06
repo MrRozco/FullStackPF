@@ -190,7 +190,7 @@ export interface Page {
       | null;
     media?: (string | null) | Media;
   };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | ShowcaseBlock)[];
+  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | ShowcaseBlock | MystackBlock)[];
   meta?: {
     title?: string | null;
     /**
@@ -763,6 +763,38 @@ export interface ShowcaseBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MystackBlock".
+ */
+export interface MystackBlock {
+  title: string;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  logos?:
+    | {
+        logo: string | Media;
+        altText: string;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'mystack';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1052,6 +1084,7 @@ export interface PagesSelect<T extends boolean = true> {
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
         showcase?: T | ShowcaseBlockSelect<T>;
+        mystack?: T | MystackBlockSelect<T>;
       };
   meta?:
     | T
@@ -1168,6 +1201,23 @@ export interface ShowcaseBlockSelect<T extends boolean = true> {
     | T
     | {
         image?: T;
+        altText?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MystackBlock_select".
+ */
+export interface MystackBlockSelect<T extends boolean = true> {
+  title?: T;
+  content?: T;
+  logos?:
+    | T
+    | {
+        logo?: T;
         altText?: T;
         id?: T;
       };
