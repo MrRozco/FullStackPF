@@ -1,20 +1,20 @@
-import { cn } from '@/utilities/ui'
-import React from 'react'
-import RichText from '@/components/RichText'
+import { cn } from '@/utilities/ui';
+import React from 'react';
+import RichText from '@/components/RichText';
+import { CMSLink } from '../../components/Link';
+import { Media } from '@/components/Media';
 
-import type { ContentBlock as ContentBlockProps } from '@/payload-types'
-
-import { CMSLink } from '../../components/Link'
+import type { ContentBlock as ContentBlockProps } from '@/payload-types';
 
 export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
-  const { columns } = props
+  const { columns } = props;
 
   const colsSpanClasses = {
     full: '12',
     half: '6',
     oneThird: '4',
     twoThirds: '8',
-  }
+  };
 
   return (
     <div className="container my-16">
@@ -22,7 +22,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
         {columns &&
           columns.length > 0 &&
           columns.map((col, index) => {
-            const { enableLink, link, richText, size } = col
+            const { contentType, enableLink, link, richText, image, size, anchorId } = col;
 
             return (
               <div
@@ -30,14 +30,21 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                   'md:col-span-2': size !== 'full',
                 })}
                 key={index}
+                id={anchorId ?? undefined}
               >
-                {richText && <RichText data={richText} enableGutter={false} />}
+                {contentType === 'richText' && richText && (
+                  <RichText data={richText} enableGutter={false} />
+                )}
+
+                {contentType === 'image' && image && typeof image !== 'string' && (
+                  <Media resource={image}/>
+                )}
 
                 {enableLink && <CMSLink {...link} />}
               </div>
-            )
+            );
           })}
       </div>
     </div>
-  )
-}
+  );
+};

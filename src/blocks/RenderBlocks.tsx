@@ -9,6 +9,7 @@ import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { ShowcaseComponent } from '@/blocks/Showcase/Component'
 import { MystackComponent } from '@/blocks/Mystack/Component'
+import { PortfolioComponent } from '@/blocks/Portfolio/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -18,6 +19,7 @@ const blockComponents = {
   mediaBlock: MediaBlock,
   showcase: ShowcaseComponent,
   mystack: MystackComponent,
+  portfolio: PortfolioComponent,
 }
 
 export const RenderBlocks: React.FC<{

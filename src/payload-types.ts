@@ -190,7 +190,16 @@ export interface Page {
       | null;
     media?: (string | null) | Media;
   };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | ShowcaseBlock | MystackBlock)[];
+  layout: (
+    | CallToActionBlock
+    | ContentBlock
+    | MediaBlock
+    | ArchiveBlock
+    | FormBlock
+    | ShowcaseBlock
+    | MystackBlock
+    | PortfolioBlock
+  )[];
   meta?: {
     title?: string | null;
     /**
@@ -439,7 +448,12 @@ export interface CallToActionBlock {
 export interface ContentBlock {
   columns?:
     | {
+        anchorId?: string | null;
         size?: ('oneThird' | 'half' | 'twoThirds' | 'full') | null;
+        /**
+         * Choose whether to display text or an image in this column.
+         */
+        contentType?: ('richText' | 'image') | null;
         richText?: {
           root: {
             type: string;
@@ -455,6 +469,7 @@ export interface ContentBlock {
           };
           [k: string]: unknown;
         } | null;
+        image?: (string | null) | Media;
         enableLink?: boolean | null;
         link?: {
           type?: ('reference' | 'custom') | null;
@@ -795,6 +810,48 @@ export interface MystackBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PortfolioBlock".
+ */
+export interface PortfolioBlock {
+  title: string;
+  cards?:
+    | {
+        image: string | Media;
+        modal: {
+          title: string;
+          text: {
+            root: {
+              type: string;
+              children: {
+                type: string;
+                version: number;
+                [k: string]: unknown;
+              }[];
+              direction: ('ltr' | 'rtl') | null;
+              format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+              indent: number;
+              version: number;
+            };
+            [k: string]: unknown;
+          };
+          image: string | Media;
+          buttons?:
+            | {
+                text: string;
+                link: string;
+                id?: string | null;
+              }[]
+            | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'portfolio';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1085,6 +1142,7 @@ export interface PagesSelect<T extends boolean = true> {
         formBlock?: T | FormBlockSelect<T>;
         showcase?: T | ShowcaseBlockSelect<T>;
         mystack?: T | MystackBlockSelect<T>;
+        portfolio?: T | PortfolioBlockSelect<T>;
       };
   meta?:
     | T
@@ -1132,8 +1190,11 @@ export interface ContentBlockSelect<T extends boolean = true> {
   columns?:
     | T
     | {
+        anchorId?: T;
         size?: T;
+        contentType?: T;
         richText?: T;
+        image?: T;
         enableLink?: T;
         link?:
           | T
@@ -1219,6 +1280,35 @@ export interface MystackBlockSelect<T extends boolean = true> {
     | {
         logo?: T;
         altText?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PortfolioBlock_select".
+ */
+export interface PortfolioBlockSelect<T extends boolean = true> {
+  title?: T;
+  cards?:
+    | T
+    | {
+        image?: T;
+        modal?:
+          | T
+          | {
+              title?: T;
+              text?: T;
+              image?: T;
+              buttons?:
+                | T
+                | {
+                    text?: T;
+                    link?: T;
+                    id?: T;
+                  };
+            };
         id?: T;
       };
   id?: T;
@@ -1694,6 +1784,7 @@ export interface Header {
  */
 export interface Footer {
   id: string;
+  logo?: (string | null) | Media;
   navItems?:
     | {
         link: {
@@ -1761,6 +1852,7 @@ export interface HeaderSelect<T extends boolean = true> {
  * via the `definition` "footer_select".
  */
 export interface FooterSelect<T extends boolean = true> {
+  logo?: T;
   navItems?:
     | T
     | {

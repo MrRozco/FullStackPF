@@ -25,7 +25,7 @@ export const ShowcaseComponent: React.FC<ShowcaseBlockProps> = ({ items, title, 
     <div className="container flex flex-col lg:flex-row">
       {/* Left Side */}
       <div className="lg:w-1/2 p-4">
-        <h2 className="text-3xl mb-4 font-bold">{title}</h2>
+        <h2 className="text-2xl mb-4 font-bold">{title}</h2>
         {content && <RichText className="mb-4 text-lg" data={content} enableGutter={false} />}
         {button && (
             <Button asChild className="border border-white py-3 px-6 rounded mt-4">

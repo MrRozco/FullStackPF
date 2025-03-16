@@ -10,7 +10,7 @@ export const MystackComponent: React.FC<MystackBlockProps> = ({ title, content, 
         <div className="container flex flex-col">
         {/* Left Side */}
             <div className="flex flex-col justify-center content-center text-center">
-                <h2 className="text-3xl mb-4 font-bold">{title}</h2>
+                <h2 className="text-2xl mb-4 font-bold">{title}</h2>
                 {content && <RichText className="mb-4 text-lg" data={content} enableGutter={false} />}
             </div>
         {/* Right Side - Carousel */}
