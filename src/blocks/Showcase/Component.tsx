@@ -42,7 +42,7 @@ export const ShowcaseComponent: React.FC<ShowcaseBlockProps> = ({ items, title, 
           {items && items.map((item, index) => (
               item.image ? (
                 <CarouselItem key={index} >
-                  <div className="carousel-item rounded-lg overflow-hidden">
+                  <div className="carousel-item rounded-lg overflow-hidden border-border border">
                     <Media resource={item.image}/>
                   </div>
                 </CarouselItem>

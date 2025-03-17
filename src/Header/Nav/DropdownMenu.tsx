@@ -14,7 +14,7 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({ dropdownLinks, isOpe
         flex flex-col w-full bg-gray-400 shadow-lg
         ${isOpen ? 'flex' : 'hidden'}
         relative
-        lg:absolute lg:left-0 lg:top-[101%] lg:min-w-[300px]
+        lg:absolute lg:left-0 lg:top-[100%] lg:min-w-[300px]
         lg:hidden
         lg:group-hover:flex
       `}

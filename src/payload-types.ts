@@ -454,6 +454,7 @@ export interface ContentBlock {
          * Choose whether to display text or an image in this column.
          */
         contentType?: ('richText' | 'image') | null;
+        boxed?: ('false' | 'true') | null;
         richText?: {
           root: {
             type: string;
@@ -1193,6 +1194,7 @@ export interface ContentBlockSelect<T extends boolean = true> {
         anchorId?: T;
         size?: T;
         contentType?: T;
+        boxed?: T;
         richText?: T;
         image?: T;
         enableLink?: T;

@@ -22,13 +22,13 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
         {columns &&
           columns.length > 0 &&
           columns.map((col, index) => {
-            const { contentType, enableLink, link, richText, image, size, anchorId } = col;
+            const { contentType, enableLink, link, richText, image, size, anchorId, boxed } = col;
 
             return (
               <div
                 className={cn(`col-span-4 lg:col-span-${colsSpanClasses[size!]}`, {
                   'md:col-span-2': size !== 'full',
-                })}
+                })  + (boxed === 'true' ? 'border-border border bg-card p-4 hover:transform hover:scale-105 transition-transform duration-500 ' : '')}
                 key={index}
                 id={anchorId ?? undefined}
               >

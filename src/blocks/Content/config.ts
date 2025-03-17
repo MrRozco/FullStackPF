@@ -60,6 +60,24 @@ const columnFields: Field[] = [
     },
   },
   {
+    name: 'boxed',
+    type: 'radio',
+    defaultValue: 'false',
+    options: [
+      {
+        label: 'No',
+        value: 'false',
+      },
+      {
+        label: 'Yes',
+        value: 'true',
+      },
+    ],
+    admin: {
+      condition: (_, siblingData) => siblingData.contentType === 'richText', // Show only if richText is selected
+    },
+  },
+  {
     name: 'richText',
     type: 'richText',
     editor: lexicalEditor({
